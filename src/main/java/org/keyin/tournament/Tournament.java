@@ -2,8 +2,8 @@ package org.keyin.tournament;
 
 import org.keyin.member.Member;
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
+import java.time.LocalDate;
 
 @Entity
 public class Tournament {
@@ -12,8 +12,8 @@ public class Tournament {
     private Long id;
 
     private String tourneyName;
-    private Date startDate;
-    private Date endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private String location;
     private double entryFee;
     private double tourneyPrize;
@@ -24,7 +24,7 @@ public class Tournament {
     //Constructors
     public Tournament() {}
 
-    public Tournament(String tourneyName, Date startDate, Date endDate, String location, double entryFee, double tourneyPrize) {
+    public Tournament(String tourneyName, LocalDate startDate, LocalDate endDate, String location, double entryFee, double tourneyPrize) {
         this.tourneyName = tourneyName;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -50,19 +50,19 @@ public class Tournament {
         this.tourneyName = tourneyName;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
@@ -88,5 +88,13 @@ public class Tournament {
 
     public void setTourneyPrize(double tourneyPrize) {
         this.tourneyPrize = tourneyPrize;
+    }
+
+    public List<Member> getTourneyMembers() {
+        return tourneyMembers;
+    }
+
+    public void setTourneyMembers(List<Member> tourneyMembers) {
+        this.tourneyMembers = tourneyMembers;
     }
 }

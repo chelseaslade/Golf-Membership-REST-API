@@ -2,6 +2,7 @@ package org.keyin.member;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 public class Member {
@@ -13,14 +14,14 @@ public class Member {
     private String address;
     private String email;
     private String phone;
-    private Date membershipStart;
+    private LocalDate membershipStart;
     private String membershipLength;
 
     //Constructors
     public Member() {
     }
 
-    public Member(String name, String address, String email, String phone, Date membershipStart) {
+    public Member(String name, String address, String email, String phone, LocalDate membershipStart) {
         this.name = name;
         this.address = address;
         this.email = email;
@@ -69,11 +70,11 @@ public class Member {
         this.phone = phone;
     }
 
-    public Date getMembershipStart() {
+    public LocalDate getMembershipStart() {
         return membershipStart;
     }
 
-    public void setMembershipStart(Date membershipStart) {
+    public void setMembershipStart(LocalDate membershipStart) {
         this.membershipStart = membershipStart;
     }
 
