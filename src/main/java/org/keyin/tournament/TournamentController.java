@@ -52,6 +52,7 @@ public class TournamentController {
                     existingTournament.setLocation(updatedTournament.getLocation());
                     existingTournament.setEntryFee(updatedTournament.getEntryFee());
                     existingTournament.setTourneyPrize(updatedTournament.getTourneyPrize());
+                    existingTournament.setTourneyMembers(updatedTournament.getTourneyMembers());
                     Tournament savedTournament = tournamentRepository.save(existingTournament);
                     return new ResponseEntity<>(savedTournament, HttpStatus.OK);
                 })

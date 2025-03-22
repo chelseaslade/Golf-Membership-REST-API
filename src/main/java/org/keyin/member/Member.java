@@ -1,6 +1,8 @@
 package org.keyin.member;
 
 import javax.persistence.*;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.time.LocalDate;
 
@@ -27,6 +29,7 @@ public class Member {
         this.email = email;
         this.phone = phone;
         this.membershipStart = membershipStart;
+        this.membershipLength = getMembershipLength();
     }
 
     //Methods
@@ -79,6 +82,13 @@ public class Member {
     }
 
     public String getMembershipLength() {
-        return membershipLength;
+        if (membershipStart == null) {
+            return "Membership start date not specified.";
+        }
+
+        LocalDate currentDate = LocalDate.now();
+        long membershipDays = ChronoUnit.DAYS.between(membershipStart, currentDate);
+
+        return membershipDays + " days";
     }
 }

@@ -24,13 +24,14 @@ public class Tournament {
     //Constructors
     public Tournament() {}
 
-    public Tournament(String tourneyName, LocalDate startDate, LocalDate endDate, String location, double entryFee, double tourneyPrize) {
+    public Tournament(String tourneyName, LocalDate startDate, LocalDate endDate, String location, double entryFee, double tourneyPrize, List<Member> tourneyMembers) {
         this.tourneyName = tourneyName;
         this.startDate = startDate;
         this.endDate = endDate;
         this.location = location;
         this.entryFee = entryFee;
         this.tourneyPrize = tourneyPrize;
+        this.tourneyMembers = tourneyMembers;
     }
 
     //Methods
