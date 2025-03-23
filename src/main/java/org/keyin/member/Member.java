@@ -1,9 +1,7 @@
 package org.keyin.member;
 
 import javax.persistence.*;
-import java.time.Period;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
 import java.time.LocalDate;
 
 @Entity

@@ -26,6 +26,21 @@ public class MemberController {
         return memberService.getMemberById(id);
     }
 
+    @GetMapping("/{name}")
+    public ArrayList<Member> getMemberByName(@PathVariable String name) {
+        return memberService.getMembersByName(name);
+    }
+
+    @GetMapping("/{email}")
+    public ArrayList<Member> getMemberByEmail(@PathVariable String email) {
+        return memberService.getMembersByEmail(email);
+    }
+
+    @GetMapping("/{phone}")
+    public ArrayList<Member> getMemberByPhone(@PathVariable String phone) {
+        return memberService.getMembersByPhone(phone);
+    }
+
     @PostMapping
     public ResponseEntity<Member> createMember(@RequestBody Member member) {
         Member newMember = memberRepository.save(member);
