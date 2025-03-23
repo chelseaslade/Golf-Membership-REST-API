@@ -23,8 +23,8 @@ public class TournamentService {
         return tournamentRepository.findById(id).orElse(null);
     }
 
-    public ArrayList<Tournament> getTournamentsByName(String name) {
-        return tournamentRepository.findByName(name);
+    public ArrayList<Tournament> getTournamentsByTourneyName(String tourneyName) {
+        return tournamentRepository.findByTourneyName(tourneyName);
     }
 
     public ArrayList<Tournament> getTournamentsByLocation(String location) {

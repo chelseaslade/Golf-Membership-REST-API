@@ -29,14 +29,14 @@ public class TournamentController {
 
     @GetMapping("/search")
     public ResponseEntity<ArrayList<Tournament>> searchTournaments(
-            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String tourneyName,
             @RequestParam(required = false) String location,
             @RequestParam(required = false) LocalDate startDate){
 
         ArrayList<Tournament> results = new ArrayList<>();
 
-        if (name != null) {
-            results = tournamentService.getTournamentsByName(name);
+        if (tourneyName != null) {
+            results = tournamentService.getTournamentsByTourneyName(tourneyName);
         } else if (location != null) {
             results = tournamentService.getTournamentsByLocation(location);
         } else if (startDate != null) {
