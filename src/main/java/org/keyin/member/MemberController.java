@@ -26,19 +26,24 @@ public class MemberController {
         return memberService.getMemberById(id);
     }
 
-    @GetMapping("/{name}")
-    public ArrayList<Member> getMemberByName(@PathVariable String name) {
-        return memberService.getMembersByName(name);
-    }
+    @GetMapping("/search")
+    public ResponseEntity<ArrayList<Member>> searchMembers(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String email,
+            @RequestParam(required = false) String phone) {
 
-    @GetMapping("/{email}")
-    public ArrayList<Member> getMemberByEmail(@PathVariable String email) {
-        return memberService.getMembersByEmail(email);
-    }
+        ArrayList<Member> results = new ArrayList<>();
 
-    @GetMapping("/{phone}")
-    public ArrayList<Member> getMemberByPhone(@PathVariable String phone) {
-        return memberService.getMembersByPhone(phone);
+        if (name != null) {
+            results = memberService.getMembersByName(name);
+        } else if (email != null) {
+            results = memberService.getMembersByEmail(email);
+        } else if (phone != null) {
+            results = memberService.getMembersByPhone(phone);
+        }
+
+        return results.isEmpty() ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
+                : new ResponseEntity<>(results, HttpStatus.OK);
     }
 
     @PostMapping
