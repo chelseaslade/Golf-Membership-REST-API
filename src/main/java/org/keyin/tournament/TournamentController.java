@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @RestController
@@ -24,6 +25,26 @@ public class TournamentController {
     @GetMapping("/{id}")
     public Tournament getTournament(@PathVariable Long id) {
         return tournamentService.getTournamentById(id);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<ArrayList<Tournament>> searchTournaments(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String location,
+            @RequestParam(required = false) LocalDate startDate){
+
+        ArrayList<Tournament> results = new ArrayList<>();
+
+        if (name != null) {
+            results = tournamentService.getTournamentsByName(name);
+        } else if (location != null) {
+            results = tournamentService.getTournamentsByLocation(location);
+        } else if (startDate != null) {
+            results = tournamentService.getTournamentsByStartDate(startDate);
+        }
+
+        return results.isEmpty() ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
+                : new ResponseEntity<>(results, HttpStatus.OK);
     }
 
     @PostMapping

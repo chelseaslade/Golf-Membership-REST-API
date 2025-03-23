@@ -2,6 +2,8 @@ package org.keyin.tournament;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Service
@@ -19,6 +21,18 @@ public class TournamentService {
 
     public Tournament getTournamentById(Long id) {
         return tournamentRepository.findById(id).orElse(null);
+    }
+
+    public ArrayList<Tournament> getTournamentsByName(String name) {
+        return tournamentRepository.findByName(name);
+    }
+
+    public ArrayList<Tournament> getTournamentsByLocation(String location) {
+        return tournamentRepository.findByLocation(location);
+    }
+
+    public ArrayList<Tournament> getTournamentsByStartDate(LocalDate startDate) {
+        return tournamentRepository.findByStartDate(startDate);
     }
 }
 
