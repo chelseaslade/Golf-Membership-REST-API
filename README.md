@@ -1,4 +1,4 @@
-# Golf Membership Rest API - SDAT QAP 2
+# Golf Membership REST API - SDAT QAP 2
 
 ## PROGRAM DETAILS
 ### ENDPOINTS
