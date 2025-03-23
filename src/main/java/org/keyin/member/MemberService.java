@@ -22,35 +22,14 @@ public class MemberService {
     }
 
     public ArrayList<Member> getMembersByName(String name) {
-        ArrayList<Member> members = new ArrayList<>();
-        for (Member member : memberRepository.findAll()) {
-            if (member.getName().equals(name)) {
-                members.add(member);
-                break;
-            }
-        }
-        return members;
+        return memberRepository.findByName(name);
     }
 
     public ArrayList<Member> getMembersByEmail(String email) {
-        ArrayList<Member> members = new ArrayList<>();
-        for (Member member : memberRepository.findAll()) {
-            if (member.getEmail().equals(email)) {
-                members.add(member);
-                break;
-            }
-        }
-        return members;
+        return memberRepository.findByEmail(email);
     }
 
     public ArrayList<Member> getMembersByPhone(String phone) {
-        ArrayList<Member> members = new ArrayList<>();
-        for (Member member : memberRepository.findAll()) {
-            if (member.getPhone().equals(phone)) {
-                members.add(member);
-                break;
-            }
-        }
-        return members;
+        return memberRepository.findByPhone(phone);
     }
 }
