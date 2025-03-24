@@ -99,25 +99,36 @@ pom.xml
 ```
 ## HOW TO RUN
 ### REQUIRED TECHNOLOGY
-* Docker
+* Docker Desktop (Open prior following below instructions)
 * Postman (if testing endpoints)
-* Java w/ Maven
+* Java w/ Maven installed
+* MySQL (edit password and user in applications.properties to match your credentials)
 
 Run the following commands in IDE terminal to install and run: 
 
 ### GITHUB: CLONE REPOSITORY
 ```
 git clone https://github.com/chelseaslade/Golf-Membership-REST-API.git
+cd Golf-Membership-REST-API
 ```
 ### MAVEN BUILD
 ```
 mvn clean package
 ```
-### BUILD IN DOCKER
+### BUILD & RUN IN DOCKER
+* Ensure ports for program are not already in use (3306, 8080)
 ```
-docker build -t golf-membership-api .
+docker-compose up --build
 ```
-### RUN IN DOCKER
+### CHECK RUNNING CONTAINERS
 ```
-docker run -p 8080:8080 golf-membership-api 
+docker ps
+```
+-The following should be running: 
+* golf-api (Spring Boot app)
+* mysql-db (MySQL database)
+
+### STOP CONTAINERS
+```
+docker-compose down
 ```
